@@ -1,160 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InterviewBit Study Quizzes</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InterviewBit Study Quizzes</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      background: #f5f7fa;
-      color: #333;
-      line-height: 1.6;
-    }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", sans-serif;
+        background: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+      }
 
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 48px 20px;
-      text-align: center;
-    }
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 48px 20px;
+        text-align: center;
+      }
 
-    header h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+      header h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
 
-    header p {
-      font-size: 1.05rem;
-      opacity: 0.85;
-    }
+      header p {
+        font-size: 1.05rem;
+        opacity: 0.85;
+      }
 
-    .container {
-      max-width: 900px;
-      margin: 48px auto;
-      padding: 0 20px;
-    }
+      .container {
+        max-width: 900px;
+        margin: 48px auto;
+        padding: 0 20px;
+      }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-    }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
+      }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 28px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 28px 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
 
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
-    }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
+      }
 
-    .card-icon {
-      font-size: 2rem;
-      line-height: 1;
-    }
+      .card-icon {
+        font-size: 2rem;
+        line-height: 1;
+      }
 
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
 
-    .card-count {
-      font-size: 0.875rem;
-      color: #888;
-    }
+      .card-count {
+        font-size: 0.875rem;
+        color: #888;
+      }
 
-    .card-arrow {
-      margin-top: auto;
-      color: #667eea;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
+      .card-arrow {
+        margin-top: auto;
+        color: #667eea;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
 
-    footer {
-      text-align: center;
-      padding: 32px 20px;
-      color: #aaa;
-      font-size: 0.85rem;
-    }
-  </style>
-</head>
-<body>
+      footer {
+        text-align: center;
+        padding: 32px 20px;
+        color: #aaa;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>InterviewBit Study Quizzes</h1>
+      <p>Practice questions across 6 topics &mdash; 341 questions total</p>
+    </header>
 
-  <header>
-    <h1>InterviewBit Study Quizzes</h1>
-    <p>Practice questions across 6 topics &mdash; 341 questions total</p>
-  </header>
+    <div class="container">
+      <div class="grid">
+        <a class="card" href="java/">
+          <div class="card-icon">☕</div>
+          <div class="card-title">Java</div>
+          <div class="card-count">107 questions</div>
+          <div class="card-arrow">Start quiz →</div>
+        </a>
 
-  <div class="container">
-    <div class="grid">
+        <a class="card" href="javascript/">
+          <div class="card-icon">🟨</div>
+          <div class="card-title">JavaScript</div>
+          <div class="card-count">64 questions</div>
+          <div class="card-arrow">Start quiz →</div>
+        </a>
 
-      <a class="card" href="java/">
-        <div class="card-icon">☕</div>
-        <div class="card-title">Java</div>
-        <div class="card-count">107 questions</div>
-        <div class="card-arrow">Start quiz →</div>
-      </a>
+        <a class="card" href="react/">
+          <div class="card-icon">⚛️</div>
+          <div class="card-title">React</div>
+          <div class="card-count">41 questions</div>
+          <div class="card-arrow">Start quiz →</div>
+        </a>
 
-      <a class="card" href="javascript/">
-        <div class="card-icon">🟨</div>
-        <div class="card-title">JavaScript</div>
-        <div class="card-count">64 questions</div>
-        <div class="card-arrow">Start quiz →</div>
-      </a>
+        <a class="card" href="sql/">
+          <div class="card-icon">🗄️</div>
+          <div class="card-title">SQL</div>
+          <div class="card-count">66 questions</div>
+          <div class="card-arrow">Start quiz →</div>
+        </a>
 
-      <a class="card" href="react/">
-        <div class="card-icon">⚛️</div>
-        <div class="card-title">React</div>
-        <div class="card-count">41 questions</div>
-        <div class="card-arrow">Start quiz →</div>
-      </a>
+        <a class="card" href="css/">
+          <div class="card-icon">🎨</div>
+          <div class="card-title">CSS</div>
+          <div class="card-count">34 questions</div>
+          <div class="card-arrow">Start quiz →</div>
+        </a>
 
-      <a class="card" href="sql/">
-        <div class="card-icon">🗄️</div>
-        <div class="card-title">SQL</div>
-        <div class="card-count">66 questions</div>
-        <div class="card-arrow">Start quiz →</div>
-      </a>
-
-      <a class="card" href="css/">
-        <div class="card-icon">🎨</div>
-        <div class="card-title">CSS</div>
-        <div class="card-count">34 questions</div>
-        <div class="card-arrow">Start quiz →</div>
-      </a>
-
-      <a class="card" href="system-design/">
-        <div class="card-icon">🏗️</div>
-        <div class="card-title">System Design</div>
-        <div class="card-count">29 questions</div>
-        <div class="card-arrow">Start quiz →</div>
-      </a>
-
+        <a class="card" href="system-design/">
+          <div class="card-icon">🏗️</div>
+          <div class="card-title">System Design</div>
+          <div class="card-count">29 questions</div>
+          <div class="card-arrow">Start quiz →</div>
+        </a>
+      </div>
     </div>
-  </div>
-
-  <footer>
-    Source material: InterviewBit
-  </footer>
-
-</body>
+  </body>
 </html>
