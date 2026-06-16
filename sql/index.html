@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SQL Interview Questions &amp; Answers</title>
+  <title>SQL  Questions &amp; Answers</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <style>
@@ -564,8 +564,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>🗄️ SQL Interview Questions &amp; Answers</h1>
-      <div class="header-subtitle">Comprehensive SQL interview preparation guide</div>
+      <h1>🗄️ SQL  Questions &amp; Answers</h1>
+      <div class="header-subtitle">Comprehensive SQL  study guide</div>
       <div class="header-stats">
         <div class="stat">
           <span class="stat-value" id="totalQCount">0</span>
@@ -821,6 +821,15 @@
         if (/^return\s+(new\s+[A-Z]|\d|-?\d|true\b|false\b|null\b|[a-z]\w*[.(!(\[])/.test(s)) return true;
         // 15. throw new
         if (/^throw\s+new\s/.test(s)) return true;
+        // 16. HTML/XML element line: starts with <tag, </tag, <!doctype, ends with >
+        if (/^<[!/]?[a-zA-Z]/.test(s) && /[>]$/.test(s)) return true;
+        // 17. Sass/SCSS variable declaration: $name: value
+        if (/^\$[a-zA-Z_][\w-]*\s*:/.test(s)) return true;
+        // 18. Less variable / CSS at-rule with value: @name: value
+        // (excludes @media/@keyframes/etc., which already match rule 3 because they end with '{')
+        if (/^@[a-zA-Z_][\w-]*\s*:\s*\S/.test(s)) return true;
+        // 19. Standalone CSS selector on its own line: .name, #name, :hover, ::before
+        if (/^([.#]|::?)[a-zA-Z][\w-]*$/.test(s)) return true;
         return false;
       }
 
@@ -841,7 +850,7 @@
         if (codeBlock.length > 0) {
           while (codeBlock.length && !codeBlock[codeBlock.length - 1].trim()) codeBlock.pop();
           const indented = autoIndent(codeBlock);
-          result.push('<pre><code class="language-java">' + indented.join('\n') + '</code></pre>');
+          result.push('<pre><code>' + indented.join('\n') + '</code></pre>');
           codeBlock = [];
         }
       }
