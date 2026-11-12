@@ -590,6 +590,10 @@
           <span>Questions Viewed</span>
         </div>
         <div class="stat">
+          <span class="stat-value" id="knownQCount">0</span>
+          <span>Known in Quiz</span>
+        </div>
+        <div class="stat">
           <span class="stat-value" id="searchResultCount">0</span>
           <span>Matching Results</span>
         </div>
@@ -608,6 +612,8 @@
       <button class="button button-primary" id="expandAllBtn">Expand All</button>
       <button class="button button-secondary" id="collapseAllBtn">Collapse All</button>
       <button class="button" id="quizBtn">⚡ Quiz Mode</button>
+      <button class="button" id="quizWeakBtn">🎯 Study Weak</button>
+      <button class="button button-secondary" id="resetProgressBtn">Reset Progress</button>
     </div>
 
     <div class="info-box">
@@ -677,12 +683,14 @@
     </div>
   </div>
 
+  <script src="../progress.js"></script>
   <script src="quiz_data.js"></script>
   <script>
     // Global variables - will be set by java_qa_data.js or loaded from JSON
     let questionsData = [];
     let filteredQuestions = [];
     let viewedQuestions = new Set();
+    const QP = window.QuizProgress || { isViewed: () => false, markViewed() {}, rate() {}, knownCount: () => 0, weakFirst: (a) => a, reset() {} };
 
     // Load questions from either embedded data or JSON
     async function loadQuestions() {
@@ -714,7 +722,10 @@
       }
 
       filteredQuestions = [...questionsData];
+      questionsData.forEach(q => { if (QP.isViewed(q)) viewedQuestions.add(q.number); });
       updateUI();
+      updateViewedCount();
+      updateKnownCount();
       setupEventListeners();
     }
 
@@ -1003,8 +1014,13 @@
 
       if (content.classList.contains('expanded')) {
         viewedQuestions.add(qNum);
+        QP.markViewed(questionsData.find(q => q.number === qNum));
         updateViewedCount();
       }
+    }
+
+    function updateKnownCount() {
+      document.getElementById('knownQCount').textContent = QP.knownCount(questionsData);
     }
 
     function updateViewedCount() {
@@ -1093,8 +1109,8 @@
       return a;
     }
 
-    function startQuiz(pool) {
-      quizQueue = shuffle(pool || questionsData);
+    function startQuiz(pool, keepOrder) {
+      quizQueue = keepOrder ? [...pool] : shuffle(pool || questionsData);
       quizIndex = 0;
       quizCorrect = 0;
       quizIncorrect = 0;
@@ -1147,6 +1163,8 @@
 
     function rateQuestion(correct) {
       const q = quizQueue[quizIndex];
+      QP.rate(q, correct);
+      updateKnownCount();
       if (correct) {
         quizCorrect++;
       } else {
@@ -1194,6 +1212,14 @@
     // Wire up quiz buttons
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('quizBtn').addEventListener('click', () => startQuiz());
+      document.getElementById('quizWeakBtn').addEventListener('click', () => startQuiz(QP.weakFirst(questionsData), true));
+      document.getElementById('resetProgressBtn').addEventListener('click', () => {
+        if (!confirm('Erase saved progress for this quiz in this browser?')) return;
+        QP.reset();
+        viewedQuestions.clear();
+        updateViewedCount();
+        updateKnownCount();
+      });
       document.getElementById('quizCloseBtn').addEventListener('click', exitQuiz);
       document.getElementById('quizRevealBtn').addEventListener('click', revealQuizAnswer);
       document.getElementById('quizNeedPracticeBtn').addEventListener('click', () => rateQuestion(false));
